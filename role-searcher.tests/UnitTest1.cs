@@ -1,11 +1,17 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace role_searcher.tests
 {
-    [TestClass]
+    [TestFixture]
     public class UnitTest1
     {
-        [TestMethod]
+
+        [SetUp]
+        protected void SetUp()
+        {          
+        }
+
+        [Test]
         public void TestMethod1()
         {
         }
