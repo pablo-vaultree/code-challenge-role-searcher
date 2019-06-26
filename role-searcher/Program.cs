@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace role_searcher
 {
@@ -7,15 +9,27 @@ namespace role_searcher
     {
         static void Main(string[] args)
         {
+            IConfiguration config = new ConfigurationBuilder()
+              .AddJsonFile("appsettings.json", true, true)
+              .Build();
+
+            var app = new Application(config);
+
             Console.WriteLine($"Search an user permissions- plese inform the email:");
-            var email = Console.ReadLine();
+            
+            while (true)
+            {
+                var email = Console.ReadLine();
+                var wroteToFile = app.ProcessUserPermissions(email);
 
-            var app = new Application();
-            var wroteToFile = app.ProcessUserPermissions(email);
-
-            Console.WriteLine($"Wrote file: {wroteToFile}");
-
-            Console.ReadLine();
+                if (wroteToFile)
+                {
+                    Console.WriteLine($"Wrote file: {wroteToFile}");
+                    break;
+                }
+                
+                Console.WriteLine($"Coudn't find user, please  inform a new one:");
+            }
         }
     }
 }
