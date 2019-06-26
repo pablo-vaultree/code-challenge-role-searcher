@@ -12,7 +12,7 @@ namespace role_searcher.Extensions
             foreach (var permission in permissions)
                 stringfiedPermissons.Add($"({permission.Functionality},{permission.Role.ToString()})");
 
-            var joinedstringfiedPermissons = string.Join(", ", stringfiedPermissons);
+            var joinedstringfiedPermissons = string.Join(",", stringfiedPermissons);
             var returnBody = $"[{joinedstringfiedPermissons}]";
 
             return returnBody;
