@@ -4,11 +4,10 @@ using role_searcher.Mappers;
 using System.Collections.Generic;
 using System.IO;
 
-namespace role_searcher
+namespace role_searcher.Databases
 {
-    public class CsvDatabase
+    public class CsvDatabase : IDatabase
     {       
-
         public CsvDatabase(string filePath)
         {           
             Users = new List<User>();
