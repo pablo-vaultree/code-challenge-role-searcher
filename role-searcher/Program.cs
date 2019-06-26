@@ -7,7 +7,8 @@ namespace role_searcher
     {
         static void Main(string[] args)
         {
-            var email = args.FirstOrDefault() ?? "felipe.oliveira@gmail.com";
+            Console.WriteLine($"Search an user permissions- plese inform the email:");
+            var email = Console.ReadLine();
 
             var app = new Application();
             var wroteToFile = app.ProcessUserPermissions(email);

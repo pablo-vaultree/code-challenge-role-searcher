@@ -17,6 +17,9 @@ namespace role_searcher.Searchers
         public List<CondoPermission> Search(string email)
         {
             var user = FindUser(email);
+            if (user == null)
+                return null;
+
             var condoPermissons = FindCondoPermissons(user);
 
             return condoPermissons;
