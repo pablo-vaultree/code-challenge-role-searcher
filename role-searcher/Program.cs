@@ -15,7 +15,7 @@ namespace role_searcher
 
             foreach (var user in database.Users)
             {
-                var userPermissions = new List<KeyValuePair<string, Role>>();
+                var userPermissions = new List<Permission>();
                 Console.WriteLine($"Usuario {user.Email}");
 
                 foreach (var userGroup in user.Groups)
@@ -28,7 +28,7 @@ namespace role_searcher
                     userPermissions = grupo.Permissions;
 
                     foreach (var permission in userPermissions)
-                        Console.WriteLine($"Permission {permission.Key} - {permission.Value}");
+                        Console.WriteLine($"Permission {permission.Functionality} - {permission.Role}");
                 }
 
                 Console.WriteLine($"--------");

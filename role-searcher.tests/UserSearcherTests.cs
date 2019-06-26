@@ -9,7 +9,7 @@ namespace role_searcher.tests
     [TestFixture]
     public class UserSearcherTests
     {
-        private UserSearcher _searcher;
+        private PermissionSearcher _searcher;
 
         [SetUp]
         protected void SetUp()
@@ -17,7 +17,7 @@ namespace role_searcher.tests
             var filePath = "csv-test.txt";
 
             var database = new CsvDatabase(filePath);
-            _searcher = new UserSearcher(database);
+            _searcher = new PermissionSearcher(database);
         }
 
         [Test]

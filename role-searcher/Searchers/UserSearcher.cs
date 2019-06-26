@@ -3,11 +3,11 @@ using role_searcher.Domains;
 
 namespace role_searcher.Searchers
 {
-    public class UserSearcher
+    public class PermissionSearcher
     {
         private readonly IDatabase _database;
 
-        public UserSearcher(IDatabase database)
+        public PermissionSearcher(IDatabase database)
         {
             _database = database;
         }

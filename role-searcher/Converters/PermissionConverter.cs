@@ -16,7 +16,7 @@ namespace role_searcher.Converters
                 .Replace(']', ' ')
                 .Split('(', ')');
 
-            var permissions = new List<KeyValuePair<string, Role>>(rolesParsed.Length);
+            var permissions = new List<Permission>(rolesParsed.Length);
 
             for (var index = 0; index < rolesParsed.Length; index++)
             {
@@ -30,7 +30,11 @@ namespace role_searcher.Converters
                 var functionality = roleProperties[0];
                 var role = Enum.Parse<Role>(roleProperties[1]);
 
-                permissions.Add(new KeyValuePair<string, Role>(functionality, role));
+                permissions.Add(new Permission
+                {
+                    Functionality = functionality,
+                    Role = role
+                });
             }
 
             return permissions;

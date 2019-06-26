@@ -8,6 +8,6 @@ namespace role_searcher.Domains
         
         public int Condo { get; set; }
 
-        public List<KeyValuePair<string, Role>> Permissions { get; set; }
+        public List<Permission> Permissions { get; set; }
     }
 }
