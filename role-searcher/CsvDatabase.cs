@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using role_searcher.Domains;
+using role_searcher.Mappers;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,6 +25,10 @@ namespace role_searcher
             {
                 while (csvReader.Read())
                 {
+                    csvReader.Configuration.HasHeaderRecord = false;
+                    csvReader.Configuration.RegisterClassMap<UserMap>();
+                    csvReader.Configuration.RegisterClassMap<GroupMap>();
+
                     var recordType = csvReader.GetField<RecordType>(0);
 
                     switch (recordType)

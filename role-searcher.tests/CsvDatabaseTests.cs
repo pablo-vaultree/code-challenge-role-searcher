@@ -48,5 +48,13 @@ namespace role_searcher.tests
             Assert.IsInstanceOf(typeof(GroupType), group.GroupType);
             Assert.Greater(group.Condo, 0);
         }
+
+        [Test]
+        public void CsvDatabase_Must_Seed_Group_With_Permissions()
+        {
+            var group = _database.Groups.First();
+
+            Assert.IsTrue(group.Permissions.Count > 0);
+        }
     }
 }
