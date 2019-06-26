@@ -1,5 +1,7 @@
 ﻿using role_searcher.Databases;
 using role_searcher.Domains;
+using role_searcher.Searchers;
+using role_searcher.Writers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +12,28 @@ namespace role_searcher
     {
         static void Main(string[] args)
         {
-            var filePath = "code-test-Back-End.txt";
-            var database = new CsvDatabase(filePath);
+            var email = args.FirstOrDefault() ?? "felipe.oliveira@gmail.com";
 
-            foreach (var user in database.Users)
+            var filePathRead = "code-test-Back-End.txt";
+            var filePathWrite = "code-test-Back-End-result.txt";
+
+            var database = new CsvDatabase(filePathRead);
+            var searcher = new UserCondoPermissionsSearcher(database);
+            
+            var condoPermissions = searcher.Search(email);
+
+            foreach (var condoPermission in condoPermissions)
             {
-                var userPermissions = new List<Permission>();
-                Console.WriteLine($"Usuario {user.Email}");
+                Console.WriteLine($"Condo: {condoPermission.Condo}");
 
-                foreach (var userGroup in user.Groups)
-                {
-                    var grupo = database.Groups.FirstOrDefault(g =>
-                        g.GroupType == userGroup.GroupType && g.Condo == userGroup.Condo);
-
-                    Console.WriteLine($"Grupo {grupo.GroupType.ToString()} - Condominio {grupo.Condo}");
-
-                    userPermissions = grupo.Permissions;
-
-                    foreach (var permission in userPermissions)
-                        Console.WriteLine($"Permission {permission.Functionality} - {permission.Role}");
-                }
-
-                Console.WriteLine($"--------");
+                foreach (var permission in condoPermission.Permissions)
+                    Console.WriteLine($"Functionality: {permission.Functionality} - Role: {permission.Role.ToString()}");
             }
+
+            var wroteFile = new CondoPermissionsWritter(condoPermissions).Write(filePathWrite);
+            Console.WriteLine($"Wrote file {filePathWrite}: {wroteFile}");
+
+            Console.ReadLine();
         }
     }
 }

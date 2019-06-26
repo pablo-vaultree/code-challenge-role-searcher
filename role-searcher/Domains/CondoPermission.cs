@@ -33,7 +33,7 @@ namespace role_searcher.Domains
             }
         }
 
-        public bool NewPermissonHasGreaterPriority(Permission existingPermission, Permission newPermission) => 
+        private bool NewPermissonHasGreaterPriority(Permission existingPermission, Permission newPermission) => 
             newPermission.Role > existingPermission.Role;
     }
 }
