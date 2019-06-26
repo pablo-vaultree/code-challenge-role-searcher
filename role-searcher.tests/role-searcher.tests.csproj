@@ -17,4 +17,10 @@
     <ProjectReference Include="..\role-searcher\role-searcher.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="csv-test.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
