@@ -56,5 +56,6 @@ namespace role_searcher.tests
 
             Assert.IsTrue(group.Permissions.Count > 0);
         }
+
     }
 }

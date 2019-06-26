@@ -3,7 +3,6 @@ using role_searcher.Domains;
 using role_searcher.Mappers;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace role_searcher
 {
