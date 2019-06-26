@@ -10,20 +10,20 @@ namespace role_searcher.Writers
 {
     public class CondoPermissionsWritter
     {
-        private readonly List<CondoPermission> _condoPermissions;
+        private readonly string _pathToFile;
 
-        public CondoPermissionsWritter(List<CondoPermission> condoPermissions)
+        public CondoPermissionsWritter(string pathToFile)
         {
-            _condoPermissions = condoPermissions;
+            _pathToFile = pathToFile;
         }
 
-        public bool Write(string pathToFile)
+        public bool Write(List<CondoPermission> condoPermissions)
         {
-            var records = GetRecordsToWrite();
+            var records = GetRecordsToWrite(condoPermissions);
 
             try
             {
-                using (var writer = new StreamWriter(pathToFile))
+                using (var writer = new StreamWriter(_pathToFile))
                 using (var csvWriter = new CsvWriter(writer))
                 {
                     csvWriter.Configuration.HasHeaderRecord = false;
@@ -38,11 +38,11 @@ namespace role_searcher.Writers
             return true;
         }
 
-        private List<object> GetRecordsToWrite()
+        private List<object> GetRecordsToWrite(List<CondoPermission> condoPermissions)
         {
-            var records = new List<object>(_condoPermissions.Count);
+            var records = new List<object>(condoPermissions.Count);
 
-            foreach (var condoPermission in _condoPermissions)
+            foreach (var condoPermission in condoPermissions)
             {
                 records.Add(new
                 {
