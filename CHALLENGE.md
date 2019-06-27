@@ -1,20 +1,3 @@
-### Solução
-Para desenlvover a solução comecei com uma breve analise do desafio buscando os 
-dominíos envolvidos e funcionalidades necessários. Realizei a seguinte analise:
-
-- Um app que irá fazer leitura de um csv realizando parse de grupos para usuários e permissões de grupos;
-- Usuário irá possuir email e a quais grupos pertence;
-- O grupo será composto por um tipo e a qual condominío pertence e também com quais permissões é composto;
-- Toda permissão é composta por uma chave-valor com funcionalidade e tipo de permissão;
-- O programa deve poder buscar um usuário, retornar suas permissões por condominio e por priordade de tipo de permissão
-
-Para desenvolver a solução serão utilizadas as seguintes tecnologias:
-
-- .net core 2.2
-- CsvHelper lib
-- nunit
-- TDD
-
 ### code-challenge-role-searcher
 
 O aplicativo TownSq provê diversas funcionalidades ( Reservas, Entregas, etc) aos 
